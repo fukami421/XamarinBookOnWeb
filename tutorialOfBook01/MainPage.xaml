@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:tutorialOfBook01" 
+             x:Class="tutorialOfBook01.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringFormatConverter x:Key="StringFormatConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    
+    <StackLayout>
+        
+<!--        <ContentPage.Resources>
+            <ResourceDictionary>
+               <x:String x:Key="textE  xample">Hello World</x:String>
+            </ResourceDictionary>           
+        </ContentPage.Resources>
+-->
+        
+        <!-- Place new controls here -->
+<!--        <ActivityIndicator Color="Red"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="true"/>
+-->        <BoxView WidthRequest="50"
+                 HeightRequest="50"
+                 Color="Aqua"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"/>
+        <Label x:Name = "label00" 
+               Text="Welcome to Xamarin.Forms!" 
+               HorizontalOptions="Center"
+               BindingContext="{x:Reference Name=slider}"
+               Scale="{Binding Source={x:Reference slider},
+                               Path=Value}" />
+        
+        <BoxView Color="#800000FF"
+                 WidthRequest="180"
+                 HeightRequest="40"
+                 HorizontalOptions="Center"
+                 Rotation="{Binding Source={x:Reference slider},Path=Value}"
+                 Opacity="{Binding Source={x:Reference slider},
+                                   Path=Value}"
+                 CornerRadius="{Binding Source={x:Reference slider},Path=Value}"/>
+<!--        <Label Text="{StaticResource textExample}" HorizontalOptions="Center" />
+-->        
+        <Label x:Name = "label01" 
+               Text="まだクリックされてないよ" 
+               HorizontalOptions="Center" />
+ 
+        <Button x:Name="button01" 
+                Text="Click me" 
+                Clicked = "Click01" />
+        <Button x:Name="button02" 
+                Text="Change my radious" 
+                Clicked = "Click02" />
+        <Slider x:Name="slider" 
+                Maximum="360" 
+                Minimum="0" />
+        <Label Text="{Binding Message}"/>
+        <Button Text="Click!!!!!"
+                Command="{Binding NowCommand}"/>
+        <Entry Text="{Binding Value,Source={x:Reference slider},Mode=TwoWay,StringFormat= 'Slider value is {0:000}.'}"/><!--SourceとModeを指定-->
+        <Slider Maximum="100"
+                Minimum="0"
+                Value="{Binding SliderValue}"/>
+        <Label Text="{Binding LabelValue}"
+               HorizontalOptions="Center"/>
+        <ListView ItemsSource="{Binding People}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+<!--        <Label Text="{Binding Value,Source={x:Reference slider},Converter={StaticResource StringFormatConverter},ConverterParameter='Slider value is {0:000}.'}" />-->    </StackLayout>
+<!--        <Label x:Name="Original00" Text = "{Binding Path=Name}" HorizontalOptions="Center"/>  
+-->
+
+</ContentPage>
+
