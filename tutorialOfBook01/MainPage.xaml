@@ -27,12 +27,13 @@
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            IsRunning="true"/>
--->        <BoxView WidthRequest="50"
+-->     
+<!--        <BoxView WidthRequest="50"
                  HeightRequest="50"
                  Color="Aqua"
                  HorizontalOptions="Center"
                  VerticalOptions="Center"/>
-        <Label x:Name = "label00" 
+-->        <Label x:Name = "label00" 
                Text="Welcome to Xamarin.Forms!" 
                HorizontalOptions="Center"
                BindingContext="{x:Reference Name=slider}"
@@ -65,6 +66,7 @@
         <Label Text="{Binding Message}"/>
         <Button Text="Click!!!!!"
                 Command="{Binding NowCommand}"/>
+        <Switch IsToggled="{Binding CanExecute,Mode=TwoWay}"/>
         <Entry Text="{Binding Value,Source={x:Reference slider},Mode=TwoWay,StringFormat= 'Slider value is {0:000}.'}"/><!--SourceとModeを指定-->
         <Slider Maximum="100"
                 Minimum="0"

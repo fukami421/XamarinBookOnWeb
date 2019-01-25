@@ -23,7 +23,19 @@ namespace tutorialOfBook01
             get { return this.message; }
             set { this.SetProperty(ref this.message, value); }
         }
+        private bool canexecute;
+        public bool CanExecute
+        {
+            get { return this.canexecute; }
+            set 
+            {
+                this.SetProperty(ref this.canexecute, value);
+                this.NowCommand.ChangeCanExecute();
+            }
 
+        }
+        //別のプロパティと連携させる
+        public Command NowCommand { get; }
 
         public MyPageViewModel()
         {
@@ -35,11 +47,11 @@ namespace tutorialOfBook01
                 this.People.Add(new Person { Name = $"Tanaka{r.Next()}" });
                 return true;
             });
-            this.NowCommand = new Command(_ => this.Message = DateTime.Now.ToString());
+            this.NowCommand = new Command(
+               _ => this.Message = DateTime.Now.ToString(),
+               _ => this.canexecute);
         }
 
 
-
-        public Command NowCommand { get; }
     }
 }
