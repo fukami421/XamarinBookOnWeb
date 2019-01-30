@@ -15,7 +15,7 @@
         <StackLayout>
             
     <!--        <ContentPage.Resources>
-                <ResourceDictionary>
+                <ResourceDictionary>f
                    <x:String x:Key="textE  xample">Hello World</x:String>
                 </ResourceDictionary>           
             </ContentPage.Resources>
