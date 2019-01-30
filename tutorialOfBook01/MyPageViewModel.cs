@@ -4,16 +4,17 @@ using Xamarin.Forms;
 namespace tutorialOfBook01
 {
     public class MyPageViewModel:BindableBase
-    {
+    {   
+        //Binding Contextのページです
         private double sliderValue;
+        //下のようなものをプロパティと呼ぶ
         public double SliderValue
         {
             get { return this.sliderValue; }
-            //valueをthis.sliderValueに代入している
-            set { this.SetProperty(ref this.sliderValue,value); OnPropertyChanged(nameof(LabelValue)); }
+            //MainPageにおいてSliderValueプロパティが設定されたvalueをthis.sliderValueに代入している。その後、LabelValueを呼び出している
+            set { this.SetProperty(ref this.sliderValue, value); OnPropertyChanged(nameof(LabelValue)); }
         }
-
-        public string LabelValue => string.Format("This is slider ryuichi '{0:000}'", this.sliderValue);
+        public string LabelValue => string.Format("このValueは上のSliderとbindingしており、その数値は '{0:000}' です", this.sliderValue);
 
         public ObservableCollection<Person> People { get; } = new ObservableCollection<Person>();
 
@@ -44,11 +45,11 @@ namespace tutorialOfBook01
             TimeSpan.FromSeconds(5),
             () =>
             {
-                this.People.Add(new Person { Name = $"Tanaka{r.Next()}" });
+                this.People.Add(new Person { Name = $"Ryu1{r.Next()}" });
                 return true;
             });
             this.NowCommand = new Command(
-               _ => this.Message = DateTime.Now.ToString(),
+               x => this.Message = DateTime.Now.ToString((string)x),
                _ => this.canexecute);
         }
 

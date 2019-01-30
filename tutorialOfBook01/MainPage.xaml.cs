@@ -26,11 +26,14 @@ namespace tutorialOfBook01
                     break;
             }
 
+
+
+
             //label00.BindingContext = slider;
             //label00.SetBinding(RotationProperty, "Value");//SetBinding メソッドはバインディング ターゲットに対して呼び出されますが、ターゲット プロパティとソース プロパティの両方を指定しています。ソース プロパティは文字列として指定され、Slider の Value プロパティを示しています。
         }
 
-        //ここのメソッドで,MainPageクラスのlayoutがいじれることが分かった
+        //ここのメソッドで,MainPageクラスのコントロールがいじれることが分かった
         public void Click01(object sender,EventArgs args){
             label01.Text = "クリックされたよ";
         }
